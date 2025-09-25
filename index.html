@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home · Image Slider</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <!-- 顶部导航：白字，居中平均分 -->
+  <nav class="nav">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="filter.html">Filter</a>
+  </nav>
+
+  <main class="page">
+    <!-- 主视觉：全屏图 -->
+    <div id="slider">
+      <div class="slide"></div>
+      <div class="slide"></div>
+
+      <!-- 颜色图例：右下角横排 -->
+      <div class="legend" aria-label="topic legend">
+        <div class="legend-item"><span class="dot" style="--c:#D94A3B"></span><span class="label">Make up</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#C4685A"></span><span class="label">Nails</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#E0A7A1"></span><span class="label">Fashion</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#D6C0B7"></span><span class="label">Hair</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#8EC66B"></span><span class="label">Travel</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#66B66A"></span><span class="label">Jewelry</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#53C7C0"></span><span class="label">Fitness</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#4FA0E0"></span><span class="label">Art</span></div>
+        <div class="legend-item"><span class="dot" style="--c:#7C78A8"></span><span class="label">Others</span></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const images = [
+      "makeup_img/1.jpg",
+      "makeup_img/2.jpg",
+      "makeup_img/3.jpg",
+      "makeup_img/4.jpg",
+      "makeup_img/5.jpg"
+    ];
+
+    const slides = document.querySelectorAll(".slide");
+    let currentIndex = 0;
+    let topIndex = 0;
+
+    // 初始化第一张
+    slides[0].style.backgroundImage = `url(${images[0]})`;
+    slides[0].style.opacity = 1;
+
+    document.addEventListener("mousemove", (e) => {
+      const ratio = e.clientX / window.innerWidth;
+      const newIndex = Math.floor(ratio * images.length);
+      const boundedIndex = Math.min(images.length - 1, newIndex);
+
+      if (boundedIndex !== currentIndex) {
+        currentIndex = boundedIndex;
+        topIndex = 1 - topIndex;
+        const topSlide = slides[topIndex];
+        const bottomSlide = slides[1 - topIndex];
+
+        topSlide.style.backgroundImage = `url(${images[currentIndex]})`;
+        topSlide.style.opacity = 1;
+        bottomSlide.style.opacity = 0;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Filter Demo</title>
+  <link rel="stylesheet" href="filter.css" />
+</head>
+<body>
+  <!-- 顶部小字导航：三等分，与 index 一致 -->
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="introduction.html">Introduction</a>
+    <a href="filter.html" aria-current="page">Filter</a>
+  </nav>
+
+  <main class="page">
+    <div class="demo-container">
+      <!-- 左：圆形视频（稍小） -->
+      <video class="demo-video" src="demo.MP4" autoplay loop muted playsinline></video>
+
+      <!-- 右：图片（与视频等高） + 文案 -->
+      <div class="qr-section">
+        <img src="filter_qr.PNG" alt="Filter QR Code" class="qr-img">
+        <p>Scan to Try</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

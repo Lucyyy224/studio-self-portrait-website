@@ -1,0 +1,87 @@
+/* ===== Base ===== */
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; height:100%; }
+body{
+  background:#fff;
+  color:#111;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== 顶部小字导航（与 index 一致） ===== */
+.nav{
+  height:44px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items:center;
+  text-align:center;
+  padding:0 16px;
+  border-bottom:1px solid #eaeaea;
+  position: sticky; top:0; z-index:10;
+  background:#fff;
+}
+.nav a{
+  font-size:12px; letter-spacing:.06em; text-transform: uppercase;
+  text-decoration:none; color:#111; opacity:.9;
+}
+.nav a[aria-current="page"]{ font-weight:700; opacity:1; }
+
+/* ===== 页面与布局 ===== */
+.page{
+  min-height: calc(100vh - 44px);
+  display:flex; align-items:center; justify-content:center;
+  padding: 36px 16px;
+}
+
+.demo-container{
+  display:flex; align-items:center; justify-content:center;
+  gap: clamp(20px, 4vw, 48px);
+}
+
+/* 左：圆形视频（更小） */
+.demo-video{
+  width: clamp(160px, 22vw, 220px);  /* 比之前小一些 */
+  height: clamp(160px, 22vw, 220px);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  display:block;
+  border:1px solid #eee;
+}
+
+/* 右：二维码保持原尺寸 */
+.qr-section{
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  text-align:center;
+}
+
+.qr-img{
+  max-width: 200px;   /* 固定二维码大小 */
+  width: 30vw;
+  border-radius: 12px;
+  border:1px solid #eee;
+  object-fit: cover;
+}
+
+.qr-section p{
+  margin:0;
+  font-size:14px;
+  letter-spacing:.02em;
+  color:#555;
+}
+
+/* ===== 小屏：上下排 ===== */
+@media (max-width: 780px){
+  .demo-container{
+    flex-direction: column;
+  }
+  .demo-video{
+    width: 160px;   /* 小屏时视频固定更小 */
+    height: 160px;
+  }
+  .qr-img{
+    max-width: 200px;  /* 小屏二维码保持大小不变 */
+    width: auto;
+  }
+}

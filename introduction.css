@@ -1,0 +1,68 @@
+/* ===== Base ===== */
+*{ box-sizing: border-box; }
+html, body{ margin:0; padding:0; }
+body{
+  background:#fff; color:#111;
+  font-family: Georgia, "Times New Roman", Times, serif; /* 与 index 一致的正式衬线体 */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ===== 顶部小字导航（与 index 一致） ===== */
+.nav{
+  height:44px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items:center;
+  text-align:center;
+  padding:0 16px;
+  border-bottom:1px solid #eaeaea;
+  position: sticky; top:0; z-index:10;
+  background:#fff;
+}
+.nav a{
+  font-size:12px; letter-spacing:.06em; text-transform: uppercase;
+  text-decoration:none; color:#111; opacity:.9;
+}
+.nav a[aria-current="page"]{ font-weight:700; opacity:1; }
+
+/* ===== 页面布局 ===== */
+.page{
+  display:flex; flex-direction:column; align-items:center;
+  padding:28px 16px 56px;
+  gap:36px;
+}
+
+/* 统一内容宽度：图片与文字同宽、居中 */
+:root{
+  --content-w: min(820px, 92vw); /* 不会太大 */
+}
+
+/* 每个区块：图片 + 文本 */
+.block{
+  width: var(--content-w);
+  display:flex; flex-direction:column; align-items:center;
+  gap:16px;
+}
+
+/* 统一图片尺寸与比例（避免忽大忽小） */
+.intro-img{
+  width: var(--content-w);
+  aspect-ratio: 3 / 2;          /* 统一为 3:2，可改 4/3 或 16/9 */
+  object-fit: cover;             /* 超出裁剪，保证统一视觉高度 */
+  display:block;
+  border: 1px solid #eee;
+}
+
+/* 文本与图片同宽、行距更大 */
+.text{
+  width: var(--content-w);
+  margin:0;
+  font-size: clamp(15px, 1.6vw, 17px);
+  line-height: 1.9;              /* 行距更舒适 */
+  letter-spacing: .01em;
+  color:#111;
+}
+
+/* 细节：底部留白 */
+.page-footer{ height: 8px; }
